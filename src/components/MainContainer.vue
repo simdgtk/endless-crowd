@@ -36,6 +36,7 @@ const peopleDialogue = ref(null);
 
 function savePosition() {
   localStorage.position = JSON.stringify({ x: player.x, y: player.y });
+  // localStorage.setItem("position", JSON.stringify({ x: player.x, y: player.y }));
 }
 function toogleReset() {
   reset.value = !reset.value;
@@ -63,7 +64,11 @@ onMounted(async () => {
 
   // le fond
   const tileTexture = await Assets.load(tile);
-  const tilingSprite = new TilingSprite(tileTexture, app.screen.width * 1, app.screen.height * 1);
+  const tilingSprite = new TilingSprite({
+    texture: tileTexture,
+    width: app.screen.width * 1,
+    height: app.screen.height * 10,
+  });
   tilingSprite.tileScale.set(5);
   app.ticker.add(() => {
     tilingSprite.tilePosition.x -= 1;
@@ -330,11 +335,11 @@ onMounted(async () => {
 
         if (intersects(player, characterSprite)) {
           modal.value.style.display = "block";
-          console.log(character.dialogue);
+          // console.log(character.dialogue);
           character.seen = true;
           peopleName.value.textContent = character.name;
           peopleDialogue.value.textContent = character.dialogue;
-          console.log(character.seen);
+          // console.log(character.seen);
           setTimeout(() => {
             modal.value.style.display = "none";
           }, 4000);
@@ -470,8 +475,8 @@ onMounted(async () => {
 
       // Réinitialisation à la position centrale
       if (reset.value) {
-        player.x = world.width / 2 - 32;
-        player.y = world.height / 2 - 32;
+        player.x = 0;
+        player.y = 0;
         world.pivot.x = player.x;
         world.pivot.y = player.y;
         location.value.textContent = `x: ${player.x}, y: ${player.y}`;
