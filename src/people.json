@@ -1,0 +1,30 @@
+{
+  "characters": [
+    {
+      "id": 1,
+      "name": "Aldric le Sage",
+      "texture": "assets/people/aldric.png",
+      "position": {
+        "x": 150,
+        "y": 300
+      },
+      "dialogue": "Bienvenue, voyageur ! Prenez garde aux ombres...",
+      "stats": {
+        "frequence": 0.5
+      }
+    },
+    {
+      "id": 2,
+      "name": "Martin",
+      "texture": "assets/people/martin.png",
+      "position": {
+        "x": 280,
+        "y": -100
+      },
+      "dialogue": "Yo",
+      "stats": {
+        "frequence": 0.1
+      }
+    }
+  ]
+}
