@@ -5,6 +5,54 @@
     <button id="save" class="menu-container--button" @click="savePosition()">Sauvegarder la partie</button>
     <button id="reset" class="menu-container--button" @click="toogleReset()">Revenir au centre</button>
   </div>
+  <div class="keyboard-keys" v-if="touch">
+    <button class="keyboard-keys--key" ref="left" @touchstart="() => {
+      keys[37] = true;
+    }" @touchend="() => {
+      keys[37] = false;
+    }" @touchcancel="() => {
+      keys[37] = false;
+    }"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" viewBox="0 0 256 256">
+        <path
+          d="M228,128a12,12,0,0,1-12,12H69l51.52,51.51a12,12,0,0,1-17,17l-72-72a12,12,0,0,1,0-17l72-72a12,12,0,0,1,17,17L69,116H216A12,12,0,0,1,228,128Z">
+        </path>
+      </svg></button>
+    <div class="keyboard-keys--container">
+      <button class="keyboard-keys--key" ref="up" @touchstart="() => {
+        keys[38] = true;
+      }" @touchend="() => {
+        keys[38] = false;
+      }" @touchcancel="() => {
+        keys[38] = false;
+      }"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" viewBox="0 0 256 256">
+          <path
+            d="M208.49,120.49a12,12,0,0,1-17,0L140,69V216a12,12,0,0,1-24,0V69L64.49,120.49a12,12,0,0,1-17-17l72-72a12,12,0,0,1,17,0l72,72A12,12,0,0,1,208.49,120.49Z">
+          </path>
+        </svg></button>
+      <button class="keyboard-keys--key" ref="down" @touchstart="() => {
+        keys[40] = true;
+      }" @touchend="() => {
+        keys[40] = false;
+      }" @touchcancel="() => {
+        keys[40] = false;
+      }"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" viewBox="0 0 256 256">
+          <path
+            d="M208.49,152.49l-72,72a12,12,0,0,1-17,0l-72-72a12,12,0,0,1,17-17L116,187V40a12,12,0,0,1,24,0V187l51.51-51.52a12,12,0,0,1,17,17Z">
+          </path>
+        </svg></button>
+    </div>
+    <button class="keyboard-keys--key" ref="right" @touchstart="() => {
+      keys[39] = true;
+    }" @touchend="() => {
+      keys[39] = false;
+    }" @touchcancel="() => {
+      keys[39] = false;
+    }"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" viewBox="0 0 256 256">
+        <path
+          d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z">
+        </path>
+      </svg></button>
+  </div>
   <div class="modal" ref="modal">
     <span class="modal--name" ref="peopleName">Nom du personnage</span>
     <p class="modal--dialogue" ref="peopleDialogue">"Texte dit par un personnage"</p>
@@ -33,6 +81,7 @@ const location = ref(null);
 const modal = ref(null);
 const peopleName = ref(null);
 const peopleDialogue = ref(null);
+const touch = ref(false);
 
 function savePosition() {
   localStorage.position = JSON.stringify({ x: player.x, y: player.y });
@@ -43,6 +92,13 @@ function toogleReset() {
 }
 
 onMounted(async () => {
+  // Vérifier si l'appareil est tactile
+  if ('ontouchstart' in window) {
+    touch.value = true;
+    modal.value.style.top = "0";
+    modal.value.style.height = "fit-content";
+  }
+
   modal.value.style.display = "none";
   console.log(people.characters);
   // Créer une application Pixi uniquement après le montage
@@ -584,6 +640,45 @@ onBeforeUnmount(() => {
 
   &--dialogue {
     font-size: 0.8rem;
+  }
+}
+
+.keyboard-keys {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  &--container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &--key {
+    display: flex;
+    align-items: baseline;
+    align-items: anchor-center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 16px 20px;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color .3s;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    &:active {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
   }
 }
 </style>
