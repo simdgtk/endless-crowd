@@ -6,7 +6,7 @@
     <button id="reset" class="menu-container--button" @click="toogleReset()">Revenir au centre</button>
   </div>
   <div class="keyboard-keys" v-if="touch">
-    <button class="keyboard-keys--key" ref="left" @touchstart="() => {
+    <button class="keyboard-keys--key" ref="left" @touchstart.passive="() => {
       keys[37] = true;
     }" @touchend="() => {
       keys[37] = false;
@@ -18,7 +18,7 @@
         </path>
       </svg></button>
     <div class="keyboard-keys--container">
-      <button class="keyboard-keys--key" ref="up" @touchstart="() => {
+      <button class="keyboard-keys--key" ref="up" @touchstart.passive="() => {
         keys[38] = true;
       }" @touchend="() => {
         keys[38] = false;
@@ -29,7 +29,7 @@
             d="M208.49,120.49a12,12,0,0,1-17,0L140,69V216a12,12,0,0,1-24,0V69L64.49,120.49a12,12,0,0,1-17-17l72-72a12,12,0,0,1,17,0l72,72A12,12,0,0,1,208.49,120.49Z">
           </path>
         </svg></button>
-      <button class="keyboard-keys--key" ref="down" @touchstart="() => {
+      <button class="keyboard-keys--key" ref="down" @touchstart.passive="() => {
         keys[40] = true;
       }" @touchend="() => {
         keys[40] = false;
@@ -41,7 +41,7 @@
           </path>
         </svg></button>
     </div>
-    <button class="keyboard-keys--key" ref="right" @touchstart="() => {
+    <button class="keyboard-keys--key" ref="right" @touchstart.passive="() => {
       keys[39] = true;
     }" @touchend="() => {
       keys[39] = false;
@@ -66,6 +66,7 @@ import { Application, Assets, Texture, TilingSprite, Rectangle, AnimatedSprite, 
 import people from '../people.json';
 import sprite from "@/assets/spriteFull.png";
 import tile from "@/assets/tile.png";
+import calculateOffset from "@/helpers/commons.js"
 
 const pixiContainer = ref(null);
 let app; // Stocker l'instance de Pixi
@@ -82,6 +83,7 @@ const modal = ref(null);
 const peopleName = ref(null);
 const peopleDialogue = ref(null);
 const touch = ref(false);
+let peopleFollowing = [];
 
 function savePosition() {
   localStorage.position = JSON.stringify({ x: player.x, y: player.y });
@@ -345,7 +347,7 @@ onMounted(async () => {
     // player.x = app.screen.width / 2;
     player.x = world.width / 2 - 32;
     player.y = world.height / 2 - 32;
-    player.zIndex = 10;
+    player.zIndex = -10;
     // app.stage.addChild(player);
     world.addChild(player);
     player.play();
@@ -374,20 +376,44 @@ onMounted(async () => {
       console.log('localStorage space: ' + localStorageSpace());
     }
   }
-
   const createPeople = () => {
     console.log("people", people.characters);
     people.characters.forEach(character => {
       const characterSprite = new AnimatedSprite(playerSheet["standSouth"]);
+      const index = people.characters.indexOf(character);
       characterSprite.anchor.set(0.5);
       characterSprite.animationSpeed = .5;
       characterSprite.loop = true;
       characterSprite.x = character.position.x;
       characterSprite.y = character.position.y;
-      characterSprite.zIndex = -10;
       characterSprite.play();
       character.seen = false;
+      peopleFollowing.push(characterSprite);
+      console.log("peopleFollowing", peopleFollowing[0]);
+
       app.ticker.add(() => {
+        peopleFollowing.forEach(person => {
+          const index = peopleFollowing.indexOf(person);
+          const offset = calculateOffset(index);
+
+          person.x += (player.x - person.x + offset.x) * 0.5; // Suivi avec décalage X
+          person.y += (player.y - person.y + offset.y) * 0.5; // Suivi avec décalage Y
+          characterSprite.zIndex = characterSprite.y;
+          // console.log(calculateOffset(index));
+          // console.log(`Person index: ${index}`, person);
+          // // Qu'il vienne
+          // // Calcule la direction vers le joueur
+          // let dx = player.x - person.x;
+          // let dy = player.y - person.y;
+          // let distance = Math.sqrt(dx * dx + dy * dy);
+
+          // // Vérifie si la distance est suffisante pour se déplacer
+          // if (distance > 5) {
+          //   person.x += (dx / distance) * 2; // Ajuste la vitesse
+          //   person.y += (dy / distance) * 2;
+          // }
+
+        });
 
         if (intersects(player, characterSprite)) {
           modal.value.style.display = "block";

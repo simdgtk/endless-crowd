@@ -12,6 +12,19 @@ const router = createRouter({
       name: "LegalsAndCredit",
       component: LegalsAndCredit,
     },
+    {
+      path: "/mentions-legales",
+      redirect: { name: "LegalsAndCredit" },
+    },
+    {
+      path: "/credits",
+      redirect: { name: "LegalsAndCredit" },
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "NotFound",
+      redirect: { name: "MainContainer" },
+    },
   ],
 });
 

@@ -6,19 +6,15 @@
     <button id="reset" class="menu-container--button" @click="toogleReset()">Revenir au centre</button>
   </div>
   <div class="keyboard-keys" v-if="touch">
-    <button class="keyboard-keys--key" ref="left" @touchstart="() => {
-      keys[37] = true;
-    }" @touchend="() => {
-      keys[37] = false;
-    }" @touchcancel="() => {
-      keys[37] = false;
-    }"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" viewBox="0 0 256 256">
+    <button class="keyboard-keys--key" ref="left" @touchstart.passive="() => setKey(37, true)"
+      @touchend="() => setKey(37, false)" @touchcancel="() => setKey(37, false)"><svg xmlns="http://www.w3.org/2000/svg"
+        width="32" height="32" fill="#fff" viewBox="0 0 256 256">
         <path
           d="M228,128a12,12,0,0,1-12,12H69l51.52,51.51a12,12,0,0,1-17,17l-72-72a12,12,0,0,1,0-17l72-72a12,12,0,0,1,17,17L69,116H216A12,12,0,0,1,228,128Z">
         </path>
       </svg></button>
     <div class="keyboard-keys--container">
-      <button class="keyboard-keys--key" ref="up" @touchstart="() => {
+      <button class="keyboard-keys--key" ref="up" @touchstart.passive="() => {
         keys[38] = true;
       }" @touchend="() => {
         keys[38] = false;
@@ -29,7 +25,7 @@
             d="M208.49,120.49a12,12,0,0,1-17,0L140,69V216a12,12,0,0,1-24,0V69L64.49,120.49a12,12,0,0,1-17-17l72-72a12,12,0,0,1,17,0l72,72A12,12,0,0,1,208.49,120.49Z">
           </path>
         </svg></button>
-      <button class="keyboard-keys--key" ref="down" @touchstart="() => {
+      <button class="keyboard-keys--key" ref="down" @touchstart.passive="() => {
         keys[40] = true;
       }" @touchend="() => {
         keys[40] = false;
@@ -41,7 +37,7 @@
           </path>
         </svg></button>
     </div>
-    <button class="keyboard-keys--key" ref="right" @touchstart="() => {
+    <button class="keyboard-keys--key" ref="right" @touchstart.passive="() => {
       keys[39] = true;
     }" @touchend="() => {
       keys[39] = false;
@@ -82,6 +78,11 @@ const modal = ref(null);
 const peopleName = ref(null);
 const peopleDialogue = ref(null);
 const touch = ref(false);
+const playersFollowing = ref([]);
+
+const setKey = (key, value) => {
+  keys.value[key] = value;
+};
 
 function savePosition() {
   localStorage.position = JSON.stringify({ x: player.x, y: player.y });
@@ -122,14 +123,14 @@ onMounted(async () => {
   const tileTexture = await Assets.load(tile);
   const tilingSprite = new TilingSprite({
     texture: tileTexture,
-    width: app.screen.width * 1,
+    width: app.screen.width * 10,
     height: app.screen.height * 10,
   });
   tilingSprite.tileScale.set(5);
   app.ticker.add(() => {
     tilingSprite.tilePosition.x -= 1;
   });
-  // world.addChild(tilingSprite);
+  world.addChild(tilingSprite);
 
   // on window resize, resize le canvas
   window.addEventListener('resize', () => {
@@ -386,16 +387,17 @@ onMounted(async () => {
       characterSprite.y = character.position.y;
       characterSprite.zIndex = -10;
       characterSprite.play();
+      playersFollowing.value.push(characterSprite);
       character.seen = false;
       app.ticker.add(() => {
 
         if (intersects(player, characterSprite)) {
-          modal.value.style.display = "block";
+          console.log("intersect");
+          // modal.value.style.display = "block";
           // console.log(character.dialogue);
           character.seen = true;
-          peopleName.value.textContent = character.name;
+          peopleName.value.textContent = `Oui + ${character.name}`;
           peopleDialogue.value.textContent = character.dialogue;
-          // console.log(character.seen);
           setTimeout(() => {
             modal.value.style.display = "none";
           }, 4000);
@@ -472,6 +474,9 @@ onMounted(async () => {
         }
         player.x -= speed.value;
         world.pivot.x = player.x;
+        playersFollowing.value.forEach(player => {
+          player.x -= speed.value;
+        });
 
       }
       if (keys["68"]) {

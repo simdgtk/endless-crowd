@@ -25,6 +25,656 @@
       "stats": {
         "frequence": 0.1
       }
+    },
+    {
+      "id": 2,
+      "name": "Martin",
+      "texture": "assets/people/martin.png",
+      "position": {
+        "x": 280,
+        "y": -100
+      },
+      "dialogue": "Yo",
+      "stats": {
+        "frequence": 0.1
+      }
+    },
+    {
+      "id": 3,
+      "name": "Elena",
+      "texture": "assets/people/elena.png",
+      "position": {
+        "x": 320,
+        "y": 200
+      },
+      "dialogue": "Hello there!",
+      "stats": {
+        "frequence": 0.3
+      }
+    },
+    {
+      "id": 4,
+      "name": "Gorak",
+      "texture": "assets/people/gorak.png",
+      "position": {
+        "x": 100,
+        "y": 400
+      },
+      "dialogue": "Gorak smash!",
+      "stats": {
+        "frequence": 0.7
+      }
+    },
+    {
+      "id": 5,
+      "name": "Luna",
+      "texture": "assets/people/luna.png",
+      "position": {
+        "x": 500,
+        "y": 150
+      },
+      "dialogue": "The moon is beautiful tonight.",
+      "stats": {
+        "frequence": 0.2
+      }
+    },
+    {
+      "id": 6,
+      "name": "Thorin",
+      "texture": "assets/people/thorin.png",
+      "position": {
+        "x": 250,
+        "y": 350
+      },
+      "dialogue": "For the king!",
+      "stats": {
+        "frequence": 0.4
+      }
+    },
+    {
+      "id": 7,
+      "name": "Mira",
+      "texture": "assets/people/mira.png",
+      "position": {
+        "x": 450,
+        "y": 250
+      },
+      "dialogue": "Stay safe, traveler.",
+      "stats": {
+        "frequence": 0.6
+      }
+    },
+    {
+      "id": 8,
+      "name": "Darius",
+      "texture": "assets/people/darius.png",
+      "position": {
+        "x": 600,
+        "y": 100
+      },
+      "dialogue": "Onward to victory!",
+      "stats": {
+        "frequence": 0.8
+      }
+    },
+    {
+      "id": 9,
+      "name": "Selene",
+      "texture": "assets/people/selene.png",
+      "position": {
+        "x": 700,
+        "y": 300
+      },
+      "dialogue": "The stars guide you.",
+      "stats": {
+        "frequence": 0.9
+      }
+    },
+    {
+      "id": 10,
+      "name": "Ragnar",
+      "texture": "assets/people/ragnar.png",
+      "position": {
+        "x": 800,
+        "y": 200
+      },
+      "dialogue": "To battle!",
+      "stats": {
+        "frequence": 0.5
+      }
+    },
+    {
+      "id": 11,
+      "name": "Fiona",
+      "texture": "assets/people/fiona.png",
+      "position": {
+        "x": 900,
+        "y": 400
+      },
+      "dialogue": "Greetings, friend.",
+      "stats": {
+        "frequence": 0.3
+      }
+    },
+    {
+      "id": 12,
+      "name": "Cedric",
+      "texture": "assets/people/cedric.png",
+      "position": {
+        "x": 1000,
+        "y": 150
+      },
+      "dialogue": "Watch your back.",
+      "stats": {
+        "frequence": 0.4
+      }
+    },
+    {
+      "id": 13,
+      "name": "Isla",
+      "texture": "assets/people/isla.png",
+      "position": {
+        "x": 1100,
+        "y": 250
+      },
+      "dialogue": "The sea is calm today.",
+      "stats": {
+        "frequence": 0.2
+      }
+    },
+    {
+      "id": 14,
+      "name": "Borin",
+      "texture": "assets/people/borin.png",
+      "position": {
+        "x": 1200,
+        "y": 350
+      },
+      "dialogue": "For honor!",
+      "stats": {
+        "frequence": 0.6
+      }
+    },
+    {
+      "id": 15,
+      "name": "Lyra",
+      "texture": "assets/people/lyra.png",
+      "position": {
+        "x": 1300,
+        "y": 100
+      },
+      "dialogue": "The forest whispers.",
+      "stats": {
+        "frequence": 0.7
+      }
+    },
+    {
+      "id": 16,
+      "name": "Galen",
+      "texture": "assets/people/galen.png",
+      "position": {
+        "x": 1400,
+        "y": 200
+      },
+      "dialogue": "Strength and honor.",
+      "stats": {
+        "frequence": 0.5
+      }
+    },
+    {
+      "id": 17,
+      "name": "Nina",
+      "texture": "assets/people/nina.png",
+      "position": {
+        "x": 1500,
+        "y": 300
+      },
+      "dialogue": "Stay vigilant.",
+      "stats": {
+        "frequence": 0.4
+      }
+    },
+    {
+      "id": 18,
+      "name": "Orin",
+      "texture": "assets/people/orin.png",
+      "position": {
+        "x": 1600,
+        "y": 400
+      },
+      "dialogue": "To the front lines!",
+      "stats": {
+        "frequence": 0.3
+      }
+    },
+    {
+      "id": 19,
+      "name": "Tara",
+      "texture": "assets/people/tara.png",
+      "position": {
+        "x": 1700,
+        "y": 150
+      },
+      "dialogue": "The wind is with us.",
+      "stats": {
+        "frequence": 0.2
+      }
+    },
+    {
+      "id": 20,
+      "name": "Eldon",
+      "texture": "assets/people/eldon.png",
+      "position": {
+        "x": 1800,
+        "y": 250
+      },
+      "dialogue": "For the realm!",
+      "stats": {
+        "frequence": 0.6
+      }
+    },
+    {
+      "id": 21,
+      "name": "Mila",
+      "texture": "assets/people/mila.png",
+      "position": {
+        "x": 1900,
+        "y": 350
+      },
+      "dialogue": "Be careful out there.",
+      "stats": {
+        "frequence": 0.7
+      }
+    },
+    {
+      "id": 22,
+      "name": "Drake",
+      "texture": "assets/people/drake.png",
+      "position": {
+        "x": 2000,
+        "y": 100
+      },
+      "dialogue": "To glory!",
+      "stats": {
+        "frequence": 0.8
+      }
+    },
+    {
+      "id": 23,
+      "name": "Aria",
+      "texture": "assets/people/aria.png",
+      "position": {
+        "x": 2100,
+        "y": 200
+      },
+      "dialogue": "The light guides us.",
+      "stats": {
+        "frequence": 0.9
+      }
+    },
+    {
+      "id": 24,
+      "name": "Finn",
+      "texture": "assets/people/finn.png",
+      "position": {
+        "x": 2200,
+        "y": 300
+      },
+      "dialogue": "Stay strong.",
+      "stats": {
+        "frequence": 0.5
+      }
+    },
+    {
+      "id": 25,
+      "name": "Lara",
+      "texture": "assets/people/lara.png",
+      "position": {
+        "x": 2300,
+        "y": 400
+      },
+      "dialogue": "The shadows are moving.",
+      "stats": {
+        "frequence": 0.3
+      }
+    },
+    {
+      "id": 26,
+      "name": "Jax",
+      "texture": "assets/people/jax.png",
+      "position": {
+        "x": 2400,
+        "y": 150
+      },
+      "dialogue": "For the fallen.",
+      "stats": {
+        "frequence": 0.4
+      }
+    },
+    {
+      "id": 27,
+      "name": "Nora",
+      "texture": "assets/people/nora.png",
+      "position": {
+        "x": 2500,
+        "y": 250
+      },
+      "dialogue": "The night is dark.",
+      "stats": {
+        "frequence": 0.2
+      }
+    },
+    {
+      "id": 28,
+      "name": "Kai",
+      "texture": "assets/people/kai.png",
+      "position": {
+        "x": 2600,
+        "y": 350
+      },
+      "dialogue": "To the stars!",
+      "stats": {
+        "frequence": 0.6
+      }
+    },
+    {
+      "id": 29,
+      "name": "Zara",
+      "texture": "assets/people/zara.png",
+      "position": {
+        "x": 2700,
+        "y": 100
+      },
+      "dialogue": "The dawn is coming.",
+      "stats": {
+        "frequence": 0.7
+      }
+    },
+    {
+      "id": 30,
+      "name": "Leo",
+      "texture": "assets/people/leo.png",
+      "position": {
+        "x": 2800,
+        "y": 200
+      },
+      "dialogue": "For justice!",
+      "stats": {
+        "frequence": 0.5
+      }
+    },
+    {
+      "id": 31,
+      "name": "Eva",
+      "texture": "assets/people/eva.png",
+      "position": {
+        "x": 2900,
+        "y": 300
+      },
+      "dialogue": "Stay true.",
+      "stats": {
+        "frequence": 0.4
+      }
+    },
+    {
+      "id": 32,
+      "name": "Rex",
+      "texture": "assets/people/rex.png",
+      "position": {
+        "x": 3000,
+        "y": 400
+      },
+      "dialogue": "To the end!",
+      "stats": {
+        "frequence": 0.3
+      }
+    },
+    {
+      "id": 33,
+      "name": "Lila",
+      "texture": "assets/people/lila.png",
+      "position": {
+        "x": 3100,
+        "y": 150
+      },
+      "dialogue": "The forest is alive.",
+      "stats": {
+        "frequence": 0.2
+      }
+    },
+    {
+      "id": 34,
+      "name": "Max",
+      "texture": "assets/people/max.png",
+      "position": {
+        "x": 3200,
+        "y": 250
+      },
+      "dialogue": "For the brave.",
+      "stats": {
+        "frequence": 0.6
+      }
+    },
+    {
+      "id": 35,
+      "name": "Ivy",
+      "texture": "assets/people/ivy.png",
+      "position": {
+        "x": 3300,
+        "y": 350
+      },
+      "dialogue": "The earth speaks.",
+      "stats": {
+        "frequence": 0.7
+      }
+    },
+    {
+      "id": 36,
+      "name": "Zane",
+      "texture": "assets/people/zane.png",
+      "position": {
+        "x": 3400,
+        "y": 100
+      },
+      "dialogue": "To the future!",
+      "stats": {
+        "frequence": 0.8
+      }
+    },
+    {
+      "id": 37,
+      "name": "Maya",
+      "texture": "assets/people/maya.png",
+      "position": {
+        "x": 3500,
+        "y": 200
+      },
+      "dialogue": "The light is with us.",
+      "stats": {
+        "frequence": 0.9
+      }
+    },
+    {
+      "id": 38,
+      "name": "Odin",
+      "texture": "assets/people/odin.png",
+      "position": {
+        "x": 3600,
+        "y": 300
+      },
+      "dialogue": "For the gods!",
+      "stats": {
+        "frequence": 0.5
+      }
+    },
+    {
+      "id": 39,
+      "name": "Luna",
+      "texture": "assets/people/luna.png",
+      "position": {
+        "x": 3700,
+        "y": 400
+      },
+      "dialogue": "The night is ours.",
+      "stats": {
+        "frequence": 0.3
+      }
+    },
+    {
+      "id": 40,
+      "name": "Axel",
+      "texture": "assets/people/axel.png",
+      "position": {
+        "x": 3800,
+        "y": 150
+      },
+      "dialogue": "To the front!",
+      "stats": {
+        "frequence": 0.4
+      }
+    },
+    {
+      "id": 41,
+      "name": "Nina",
+      "texture": "assets/people/nina.png",
+      "position": {
+        "x": 3900,
+        "y": 250
+      },
+      "dialogue": "The stars are bright.",
+      "stats": {
+        "frequence": 0.2
+      }
+    },
+    {
+      "id": 42,
+      "name": "Gavin",
+      "texture": "assets/people/gavin.png",
+      "position": {
+        "x": 4000,
+        "y": 350
+      },
+      "dialogue": "For the kingdom!",
+      "stats": {
+        "frequence": 0.6
+      }
+    },
+    {
+      "id": 43,
+      "name": "Lara",
+      "texture": "assets/people/lara.png",
+      "position": {
+        "x": 4100,
+        "y": 100
+      },
+      "dialogue": "The shadows are near.",
+      "stats": {
+        "frequence": 0.7
+      }
+    },
+    {
+      "id": 44,
+      "name": "Jace",
+      "texture": "assets/people/jace.png",
+      "position": {
+        "x": 4200,
+        "y": 200
+      },
+      "dialogue": "To the last breath!",
+      "stats": {
+        "frequence": 0.8
+      }
+    },
+    {
+      "id": 45,
+      "name": "Aria",
+      "texture": "assets/people/aria.png",
+      "position": {
+        "x": 4300,
+        "y": 300
+      },
+      "dialogue": "The light prevails.",
+      "stats": {
+        "frequence": 0.9
+      }
+    },
+    {
+      "id": 46,
+      "name": "Finn",
+      "texture": "assets/people/finn.png",
+      "position": {
+        "x": 4400,
+        "y": 400
+      },
+      "dialogue": "Stay strong.",
+      "stats": {
+        "frequence": 0.5
+      }
+    },
+    {
+      "id": 47,
+      "name": "Lara",
+      "texture": "assets/people/lara.png",
+      "position": {
+        "x": 4500,
+        "y": 150
+      },
+      "dialogue": "The shadows are moving.",
+      "stats": {
+        "frequence": 0.3
+      }
+    },
+    {
+      "id": 48,
+      "name": "Jax",
+      "texture": "assets/people/jax.png",
+      "position": {
+        "x": 4600,
+        "y": 250
+      },
+      "dialogue": "For the fallen.",
+      "stats": {
+        "frequence": 0.4
+      }
+    },
+    {
+      "id": 49,
+      "name": "Nora",
+      "texture": "assets/people/nora.png",
+      "position": {
+        "x": 4700,
+        "y": 350
+      },
+      "dialogue": "The night is dark.",
+      "stats": {
+        "frequence": 0.2
+      }
+    },
+    {
+      "id": 50,
+      "name": "Kai",
+      "texture": "assets/people/kai.png",
+      "position": {
+        "x": 4800,
+        "y": 100
+      },
+      "dialogue": "To the stars!",
+      "stats": {
+        "frequence": 0.6
+      }
+    },
+    {
+      "id": 51,
+      "name": "Zara",
+      "texture": "assets/people/zara.png",
+      "position": {
+        "x": 4900,
+        "y": 200
+      },
+      "dialogue": "The dawn is coming.",
+      "stats": {
+        "frequence": 0.7
+      }
     }
   ]
 }
