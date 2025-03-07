@@ -394,21 +394,21 @@ onMounted(async () => {
       app.ticker.add(() => {
 
         if (intersects(player, characterSprite) && character.canIntersect) {
-          do {
-            console.log(testIndex)
-            testIndex++;
-            modal.value.style.display = "block";
-            character.seen = true;
-            character.canIntersect = false;
-            peopleFollowing.push(characterSprite);
-            peopleName.value.textContent = character.name;
-            peopleDialogue.value.textContent = character.dialogue;
-            // console.log(character.seen);
-            setTimeout(() => {
-              modal.value.style.display = "none";
-            }, 4000);
-            i++;
-          } while (i < 1)
+          clearTimeout(modalTimeout);
+          console.log(testIndex)
+          testIndex++;
+          modal.value.style.display = "block";
+          character.seen = true;
+          character.canIntersect = false;
+          peopleFollowing.push(characterSprite);
+          peopleName.value.textContent = character.name;
+          peopleDialogue.value.textContent = character.dialogue;
+          // console.log(character.seen
+          modalTimeout = setTimeout(() => {
+            modal.value.style.display = "none";
+            modalTimeout = null; // Réinitialise la variable
+          }, 4000);
+          i++;
         }
 
       });
@@ -448,6 +448,8 @@ onMounted(async () => {
 
   window.addEventListener("keydown", keysDown)
   window.addEventListener("keyup", keysUp)
+
+  let modalTimeout = null; // pour pas que le modal se ferme trop tôt si les personnages sont détectés vers le même moment
 
   // ticker
   const gameLoop = (delta) => {
