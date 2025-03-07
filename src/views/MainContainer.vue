@@ -63,10 +63,10 @@
 <script setup>
 import { onMounted, ref, onBeforeUnmount } from 'vue';
 import { Application, Assets, Texture, TilingSprite, Rectangle, AnimatedSprite, Container } from 'pixi.js';
-import people from '../people.json';
+import people from '@/people.json';
 import sprite from "@/assets/spriteFull.png";
 import tile from "@/assets/tile.png";
-import calculateOffset from "@/helpers/commons.js"
+import { calculateOffset, intersects, pseudoRandom } from "@/helpers/commons.js";
 
 const pixiContainer = ref(null);
 let app; // Stocker l'instance de Pixi
@@ -102,7 +102,7 @@ onMounted(async () => {
   }
 
   modal.value.style.display = "none";
-  console.log(people.characters);
+  // console.log(people.characters);
   // Créer une application Pixi uniquement après le montage
   app = new Application();
   await app.init({ backgroundAlpha: 0, width: window.innerWidth, height: window.innerHeight });
@@ -376,11 +376,13 @@ onMounted(async () => {
       console.log('localStorage space: ' + localStorageSpace());
     }
   }
+  let i = 0;
+  let testIndex = 0;
   const createPeople = () => {
-    console.log("people", people.characters);
+    // console.log("people", people.characters);
     people.characters.forEach(character => {
       const characterSprite = new AnimatedSprite(playerSheet["standSouth"]);
-      const index = people.characters.indexOf(character);
+      // const index = people.characters.indexOf(character);
       characterSprite.anchor.set(0.5);
       characterSprite.animationSpeed = .5;
       characterSprite.loop = true;
@@ -388,43 +390,25 @@ onMounted(async () => {
       characterSprite.y = character.position.y;
       characterSprite.play();
       character.seen = false;
-      peopleFollowing.push(characterSprite);
-      console.log("peopleFollowing", peopleFollowing[0]);
-
+      character.canIntersect = true;
       app.ticker.add(() => {
-        peopleFollowing.forEach(person => {
-          const index = peopleFollowing.indexOf(person);
-          const offset = calculateOffset(index);
 
-          person.x += (player.x - person.x + offset.x) * 0.5; // Suivi avec décalage X
-          person.y += (player.y - person.y + offset.y) * 0.5; // Suivi avec décalage Y
-          characterSprite.zIndex = characterSprite.y;
-          // console.log(calculateOffset(index));
-          // console.log(`Person index: ${index}`, person);
-          // // Qu'il vienne
-          // // Calcule la direction vers le joueur
-          // let dx = player.x - person.x;
-          // let dy = player.y - person.y;
-          // let distance = Math.sqrt(dx * dx + dy * dy);
-
-          // // Vérifie si la distance est suffisante pour se déplacer
-          // if (distance > 5) {
-          //   person.x += (dx / distance) * 2; // Ajuste la vitesse
-          //   person.y += (dy / distance) * 2;
-          // }
-
-        });
-
-        if (intersects(player, characterSprite)) {
-          modal.value.style.display = "block";
-          // console.log(character.dialogue);
-          character.seen = true;
-          peopleName.value.textContent = character.name;
-          peopleDialogue.value.textContent = character.dialogue;
-          // console.log(character.seen);
-          setTimeout(() => {
-            modal.value.style.display = "none";
-          }, 4000);
+        if (intersects(player, characterSprite) && character.canIntersect) {
+          do {
+            console.log(testIndex)
+            testIndex++;
+            modal.value.style.display = "block";
+            character.seen = true;
+            character.canIntersect = false;
+            peopleFollowing.push(characterSprite);
+            peopleName.value.textContent = character.name;
+            peopleDialogue.value.textContent = character.dialogue;
+            // console.log(character.seen);
+            setTimeout(() => {
+              modal.value.style.display = "none";
+            }, 4000);
+            i++;
+          } while (i < 1)
         }
 
       });
@@ -564,21 +548,20 @@ onMounted(async () => {
         location.value.textContent = `x: ${player.x}, y: ${player.y}`;
         reset.value = false;
       }
+      let index = 1;
+      peopleFollowing.forEach(person => {
+        // const index = peopleFollowing.indexOf(person);
+        // let index = 3;
+        const offset = calculateOffset(index);
+        // (pseudoRandom(index) * 0.4 + 0.2)
+        person.x += (player.x - person.x + offset.x) * (pseudoRandom(index) * 0.4 + 0.2); // Suivi avec décalage X
+        person.y += (player.y - person.y + offset.y) * (pseudoRandom(index) * 0.4 + 0.2); // Suivi avec décalage Y
+        index++;
+      });
     }
   }
 
   app.ticker.add(gameLoop);
-
-  // collision
-  const intersects = (a, b) => {
-    let aBox = a.getBounds();
-    let bBox = b.getBounds();
-
-    return aBox.x + aBox.width > bBox.x &&
-      aBox.x < bBox.x + bBox.width &&
-      aBox.y + aBox.height > bBox.y &&
-      aBox.y < bBox.y + bBox.height;
-  }
 
 
 });

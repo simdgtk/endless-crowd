@@ -27,19 +27,6 @@
       }
     },
     {
-      "id": 2,
-      "name": "Martin",
-      "texture": "assets/people/martin.png",
-      "position": {
-        "x": 280,
-        "y": -100
-      },
-      "dialogue": "Yo",
-      "stats": {
-        "frequence": 0.1
-      }
-    },
-    {
       "id": 3,
       "name": "Elena",
       "texture": "assets/people/elena.png",
