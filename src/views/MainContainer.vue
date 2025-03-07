@@ -53,15 +53,17 @@
         </path>
       </svg></button>
   </div>
-  <div class="modal" ref="modal">
+  <!--<div class="modal" ref="modal">
     <span class="modal--name" ref="peopleName">Nom du personnage</span>
     <p class="modal--dialogue" ref="peopleDialogue">"Texte dit par un personnage"</p>
-  </div>
+  </div>-->
+  <Modal :peopleName="peopleName" :peopleDialogue="peopleDialogue" :showModal="showModal" />
 
 </template>
 
 <script setup>
 import { onMounted, ref, onBeforeUnmount } from 'vue';
+import Modal from '../components/Modal.vue';
 import { Application, Assets, Texture, TilingSprite, Rectangle, AnimatedSprite, Container } from 'pixi.js';
 import people from '@/people.json';
 import sprite from "@/assets/spriteFull.png";
@@ -80,8 +82,9 @@ const isLoaded = ref(false);
 let world; // Stocker le monde, container
 const location = ref(null);
 const modal = ref(null);
-const peopleName = ref(null);
-const peopleDialogue = ref(null);
+const peopleName = ref("");
+const peopleDialogue = ref("");
+const showModal = ref(false);
 const touch = ref(false);
 let peopleFollowing = [];
 
@@ -97,11 +100,11 @@ onMounted(async () => {
   // Vérifier si l'appareil est tactile
   if ('ontouchstart' in window) {
     touch.value = true;
-    modal.value.style.top = "0";
-    modal.value.style.height = "fit-content";
+    // modal.value.style.top = "0";
+    // modal.value.style.height = "fit-content";
   }
 
-  modal.value.style.display = "none";
+  showModal.value = false;
   // console.log(people.characters);
   // Créer une application Pixi uniquement après le montage
   app = new Application();
@@ -395,17 +398,17 @@ onMounted(async () => {
 
         if (intersects(player, characterSprite) && character.canIntersect) {
           clearTimeout(modalTimeout);
-          console.log(testIndex)
+          // console.log(testIndex)
           testIndex++;
-          modal.value.style.display = "block";
+          showModal.value = true;
           character.seen = true;
           character.canIntersect = false;
           peopleFollowing.push(characterSprite);
-          peopleName.value.textContent = character.name;
-          peopleDialogue.value.textContent = character.dialogue;
+          peopleName.value = character.name;
+          peopleDialogue.value = character.dialogue;
           // console.log(character.seen
           modalTimeout = setTimeout(() => {
-            modal.value.style.display = "none";
+            showModal.value = false;
             modalTimeout = null; // Réinitialise la variable
           }, 4000);
           i++;
@@ -614,43 +617,6 @@ onBeforeUnmount(() => {
     border-radius: 5px;
     color: white;
     font-variant-numeric: tabular-nums;
-  }
-}
-
-.modal {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  // width: fit-content;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 1);
-  padding: 30px;
-  color: white;
-  // max-width: 320px;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  // border-radius: 4px;
-
-  // &::after {
-  //   content: "";
-  //   position: absolute;
-  //   bottom: 100%;
-  //   left: 50%;
-  //   transform: translate(-50%, 0);
-  //   border-width: 10px;
-  //   border-style: solid;
-  //   border-color: transparent transparent rgba(0, 0, 0, 1) transparent;
-  // }
-
-  &--name {
-    font-size: 1rem;
-    font-weight: bold;
-  }
-
-  &--dialogue {
-    font-size: 0.8rem;
   }
 }
 
