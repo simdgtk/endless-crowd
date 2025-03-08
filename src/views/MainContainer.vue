@@ -465,6 +465,10 @@ onMounted(async () => {
         if (player.textures !== playerSheet["idle1"]) {
           player.textures = playerSheet["idle1"];
           player.play();
+          peopleFollowing.forEach(person => {
+            person.textures = playerSheet["idle1"];
+            person.play();
+          });
         }
       } else {
         location.value.textContent = `x: ${player.x}, y: ${player.y}`;
@@ -476,6 +480,10 @@ onMounted(async () => {
         if (!player.playing) {
           player.textures = playerSheet["walkNorth"];
           player.play();
+          peopleFollowing.forEach(person => {
+            person.textures = playerSheet["walkNorth"];
+            person.play();
+          });
         }
         player.y -= speed.value;
         world.pivot.y = player.y;
@@ -484,6 +492,10 @@ onMounted(async () => {
         if (!player.playing) {
           player.textures = playerSheet["walkWest"];
           player.play();
+          peopleFollowing.forEach(person => {
+            person.textures = playerSheet["walkWest"];
+            person.play();
+          });
         }
         player.x -= speed.value;
         world.pivot.x = player.x;
@@ -493,6 +505,10 @@ onMounted(async () => {
         if (!player.playing) {
           player.textures = playerSheet["walkEast"];
           player.play();
+          peopleFollowing.forEach(person => {
+            person.textures = playerSheet["walkEast"];
+            person.play();
+          });
         }
         player.x += speed.value;
         world.pivot.x = player.x;
@@ -502,6 +518,10 @@ onMounted(async () => {
         if (!player.playing) {
           player.textures = playerSheet["walkSouth"];
           player.play();
+          peopleFollowing.forEach(person => {
+            person.textures = playerSheet["walkSouth"];
+            person.play();
+          });
         }
         player.y += speed.value;
         world.pivot.y = player.y;
@@ -512,6 +532,10 @@ onMounted(async () => {
         if (!player.playing) {
           player.textures = playerSheet["walkWest"];
           player.play();
+          peopleFollowing.forEach(person => {
+            person.textures = playerSheet["walkWest"];
+            person.play();
+          });
         }
         player.x -= speed.value;
         world.pivot.x = player.x;
@@ -521,6 +545,10 @@ onMounted(async () => {
         if (!player.playing) {
           player.textures = playerSheet["walkNorth"];
           player.play();
+          peopleFollowing.forEach(person => {
+            person.textures = playerSheet["walkNorth"];
+            person.play();
+          });
         }
         player.y -= speed.value;
         world.pivot.y = player.y;
@@ -529,6 +557,10 @@ onMounted(async () => {
         if (!player.playing) {
           player.textures = playerSheet["walkEast"];
           player.play();
+          peopleFollowing.forEach(person => {
+            person.textures = playerSheet["walkEast"];
+            person.play();
+          });
         }
         player.x += speed.value;
         world.pivot.x = player.x;
@@ -538,6 +570,10 @@ onMounted(async () => {
         if (!player.playing) {
           player.textures = playerSheet["walkSouth"];
           player.play();
+          peopleFollowing.forEach(person => {
+            person.textures = playerSheet["walkSouth"];
+            person.play();
+          });
         }
         player.y += speed.value;
         world.pivot.y = player.y;

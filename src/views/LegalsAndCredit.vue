@@ -2,20 +2,24 @@
   <div className="legals">
     <h1>Mentions légales</h1>
     <a href="/" className="legals__link">
-      Revenir à l&apos;expérience 3D
+      Revenir au jeu
     </a>
     <div className="content">
       <div className="content__section">
-        <h2 className="content__section__title">1. Informations Générales</h2>
+        <h2 className="content__section__title">1. Informations générales</h2>
         <div className="content__section__text">
-          Ce site a été réalisé dans le cadre d&apos;un projet étudiant.
+          Ce site a été réalisé par deux étudiants en 2ème année de BUT MMI Bordeaux, dans un cadre extra-scolaire. Nous
+          prenons en compte toutes les remarques et suggestions, n'hésitez pas à nous en faire ! Le code source du jeu
+          est disponible sur <a href="https://github.com/simdgtk/endless-crowd" target="_blank"
+            rel="noopener noreferrer" title="Voir le code source sur GitHub (ouvre un nouvel onglet)">GitHub</a>.
         </div>
-        <ul className="content__section__list">
+        <ul className=" content__section__list">
           <li>
-            Responsable de la publication : Simon Daguet-Kargl et Edgar Quéméré
+            Responsables de la publication : Simon Daguet-Kargl et Edgar Quéméré
           </li>
           <li>Adresse : 33100 Bordeaux</li>
-          <li>Email : simondaguetkargl@gmail.com</li>
+          <li>Email : <a href="mailto:simondaguetkargl@gmail.com"
+              title="Envoyer un e-mail à Simon Daguet-Kargl">simondaguetkargl@gmail.com</a></li>
           <li>
             Réalisation : Simon Daguet-Kargl, Edgar Quéméré
           </li>
@@ -37,7 +41,7 @@
         </div>
       </div>
       <div className="content__section">
-        <h2 className="content__section__title">2. Données Personnelles</h2>
+        <h2 className="content__section__title">2. Données personnelles</h2>
         <div className="content__section__text">
           Ce site respecte les réglementations en matière de protection des
           données personnelles (RGPD). Aucune collecte de données personnelles
@@ -46,8 +50,7 @@
         <ul className="content__section__list">
           <li>
             Les données éventuellement collectées (via local storage)
-            sont uniquement destinées à améliorer l&apos;expérience utilisateur ne seront jamais cédées à des tiers et
-            ne nous sont pas accessibles.
+            ne nous sont pas accessibles et sont uniquement destinées à améliorer l&apos;expérience utilisateur.
           </li>
         </ul>
       </div>
@@ -56,39 +59,39 @@
         <h3>Contenus :</h3>
         <ul className="content__section__list">
           <li>
-            Nous ne seront être tenus responsables des
+            Nous ne pourrons être tenus responsables des
             erreurs ou omissions dans les contenus du site.
           </li>
         </ul>
         <h3>Accessibilité :</h3>
         <ul className="content__section__list">
           <li>
-            Bien que tout soit mis en œuvre pour assurer une accessibilité
-            optimale, aucune garantie n&apos;est fournie concernant la
-            disponibilité ininterrompue du site.
+            Bien que tout soit mis en œuvre pour assurer une accessibilité optimale, aucune garantie n'est fournie
+            concernant la disponibilité ininterrompue du site.
           </li>
         </ul>
       </div>
       <div className="content__section">
-        <h2 className="content__section__title">6. Contact</h2>
+        <h2 className="content__section__title">4. Contact</h2>
         <h3>
           Pour toute question concernant le site ou ses mentions légales, vous
           pouvez contacter :
         </h3>
         <ul className="content__section__list">
-          <li>simondaguetkargl@gmail.com</li>
+          <li><a href="mailto:simondaguetkargl@gmail.com"
+              title="Envoyer un e-mail à Simon Daguet-Kargl">simondaguetkargl@gmail.com</a></li>
         </ul>
       </div>
       <div className="content__section">
         <h2 className="content__section__title">
-          7. Mise à Jour des Mentions Légales
+          5. Mise à jour des mentions légales
         </h2>
         <div className="content__section__text">
           Ces mentions légales peuvent être modifiées à tout moment pour
           s&apos;adapter à l&apos;évolution du site ou des réglementations en vigueur.
           Merci de les consulter régulièrement.
         </div>
-        <p>Dernière mise à jour : 4 mars 2025</p>
+        <p>Dernière mise à jour : 8 mars 2025</p>
       </div>
     </div>
   </div>

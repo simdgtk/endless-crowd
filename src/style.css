@@ -118,6 +118,8 @@ meter {
   display: none;
 }
 
+/* FIN DU CSS RESET */
+
 body {
   width: 100vw;
   height: 100vh;
@@ -128,4 +130,15 @@ body {
 
 canvas {
   height: 99vh;
+}
+
+a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  color: inherit;
+
+  &:visited {
+    color: purple;
+  }
 }
