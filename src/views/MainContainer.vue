@@ -110,8 +110,6 @@ onMounted(async () => {
   app = new Application();
   await app.init({ backgroundAlpha: 0, width: window.innerWidth, height: window.innerHeight });
 
-
-
   // word container, pour que le personnage se déplace toujours au centre de l'écran
   world = new Container();
   world.height = 5000;
@@ -455,8 +453,9 @@ onMounted(async () => {
   let modalTimeout = null; // pour pas que le modal se ferme trop tôt si les personnages sont détectés vers le même moment
 
   // ticker
-  const gameLoop = (delta) => {
-    // let distance = delta * speed.value *;
+  const deltaTime = app.ticker.deltaTime;
+  const gameLoop = () => {
+    speed.value = Math.trunc(4 * deltaTime); // normaliser la vitesse d'animation, peu importe le fps
     if (isLoaded.value) {
       // console.log("player.x", player.x, "player.y", player.y);
       // Vérifie si une touche de déplacement est enfoncée
@@ -467,6 +466,7 @@ onMounted(async () => {
           player.play();
           peopleFollowing.forEach(person => {
             person.textures = playerSheet["idle1"];
+            person.zIndex = person.y;
             person.play();
           });
         }
@@ -483,6 +483,7 @@ onMounted(async () => {
           peopleFollowing.forEach(person => {
             person.textures = playerSheet["walkNorth"];
             person.play();
+            person.zIndex = person.y;
           });
         }
         player.y -= speed.value;
@@ -495,6 +496,7 @@ onMounted(async () => {
           peopleFollowing.forEach(person => {
             person.textures = playerSheet["walkWest"];
             person.play();
+            person.zIndex = person.y;
           });
         }
         player.x -= speed.value;
@@ -508,6 +510,8 @@ onMounted(async () => {
           peopleFollowing.forEach(person => {
             person.textures = playerSheet["walkEast"];
             person.play();
+            person.zIndex = person.y;
+            person.zIndex = person.y;
           });
         }
         player.x += speed.value;
@@ -521,6 +525,7 @@ onMounted(async () => {
           peopleFollowing.forEach(person => {
             person.textures = playerSheet["walkSouth"];
             person.play();
+            person.zIndex = person.y;
           });
         }
         player.y += speed.value;
@@ -535,6 +540,7 @@ onMounted(async () => {
           peopleFollowing.forEach(person => {
             person.textures = playerSheet["walkWest"];
             person.play();
+            person.zIndex = person.y;
           });
         }
         player.x -= speed.value;
@@ -548,6 +554,7 @@ onMounted(async () => {
           peopleFollowing.forEach(person => {
             person.textures = playerSheet["walkNorth"];
             person.play();
+            person.zIndex = person.y;
           });
         }
         player.y -= speed.value;
@@ -560,6 +567,7 @@ onMounted(async () => {
           peopleFollowing.forEach(person => {
             person.textures = playerSheet["walkEast"];
             person.play();
+            person.zIndex = person.y;
           });
         }
         player.x += speed.value;
@@ -573,6 +581,7 @@ onMounted(async () => {
           peopleFollowing.forEach(person => {
             person.textures = playerSheet["walkSouth"];
             person.play();
+            person.zIndex = person.y;
           });
         }
         player.y += speed.value;

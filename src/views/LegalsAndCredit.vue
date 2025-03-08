@@ -1,14 +1,14 @@
 <template>
   <div className="legals">
-    <h1>Mentions légales</h1>
-    <a href="/" className="legals__link">
-      Revenir au jeu
-    </a>
+    <h1>Crédits et mentions légales</h1>
     <div className="content">
+      <a href="/" className="legals__link">
+        Revenir au jeu
+      </a>
       <div className="content__section">
         <h2 className="content__section__title">1. Informations générales</h2>
         <div className="content__section__text">
-          Ce site a été réalisé par deux étudiants en 2ème année de BUT MMI Bordeaux, dans un cadre extra-scolaire. Nous
+          Ce site a été réalisé en 2025 par deux étudiants en 2ème année de BUT MMI Bordeaux, dans un cadre extra-scolaire. Nous
           prenons en compte toutes les remarques et suggestions, n'hésitez pas à nous en faire ! Le code source du jeu
           est disponible sur <a href="https://github.com/simdgtk/endless-crowd" target="_blank"
             rel="noopener noreferrer" title="Voir le code source sur GitHub (ouvre un nouvel onglet)">GitHub</a>.
@@ -21,7 +21,8 @@
           <li>Email : <a href="mailto:simondaguetkargl@gmail.com"
               title="Envoyer un e-mail à Simon Daguet-Kargl">simondaguetkargl@gmail.com</a></li>
           <li>
-            Réalisation : Simon Daguet-Kargl, Edgar Quéméré
+            Réalisation : Edgar Quéméré (conception, design principal, assets), Simon Daguet-Kargl (conception,
+            développement principal, design)
           </li>
         </ul>
         <h3>Hébergeur :</h3>
@@ -47,12 +48,10 @@
           données personnelles (RGPD). Aucune collecte de données personnelles
           n&apos;est effectuée.
         </div>
-        <ul className="content__section__list">
-          <li>
-            Les données éventuellement collectées (via local storage)
-            ne nous sont pas accessibles et sont uniquement destinées à améliorer l&apos;expérience utilisateur.
-          </li>
-        </ul>
+        <div className="content__section__text">
+          Les données éventuellement collectées (via local storage)
+          ne nous sont pas accessibles et sont uniquement destinées à améliorer l&apos;expérience utilisateur.
+        </div>
       </div>
       <div className="content__section">
         <h2 className="content__section__title">3. Responsabilités</h2>
@@ -105,14 +104,15 @@ body {
 }
 
 .legals {
-  max-width: 800px;
+  max-width: 750px;
   margin: 0 auto;
 
   h1 {
-    margin-top: 64px;
+    margin: 64px 0 32px 0;
     border-bottom: 2px solid black;
-    padding-bottom: 24px;
+    padding-bottom: 16px;
     width: fit-content;
+    font-size: 32px;
 
     @media screen and (max-width: 850px) {
       margin-left: 24px;
@@ -129,11 +129,11 @@ body {
   }
 
   &__link {
-    margin-top: 24px;
+    display: inline-block;
+    margin: 24px 0;
   }
 
   .content {
-    margin-top: 24px;
     padding-bottom: 24px;
 
     @media screen and (max-width: 850px) {
